@@ -1,9 +1,9 @@
-package com.gigaspaces.demo.processor.scala
+package com.gigaspaces.demo.processor
 
+import _root_.scala.beans.BeanProperty
 import java.util.logging.Logger
 import org.openspaces.events.adapter.SpaceDataEvent
-import com.gigaspaces.demo.common.scala.Data
-import scala.beans.BeanProperty
+import com.gigaspaces.demo.common.Data
 
 /**
  * The processor simulates work done no un-processed Data object. The processData

@@ -11,7 +11,7 @@
        http://www.openspaces.org/schema/core http://www.openspaces.org/schema/core/openspaces-core.xsd
        http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd">
 
-    <context:component-scan base-package="com.gigaspaces.demo.processor.scala.configuration" />
+    <context:component-scan base-package="com.gigaspaces.demo.processor.configuration" />
     <task:annotation-driven />
 
     <!--
@@ -30,7 +30,7 @@
     <os-core:giga-space id="gigaSpace" space="space" tx-manager="transactionManager"/>
 
     <!--
-        A polling event container that perfoms (by default) polling take operations against
+        A polling event container that performs (by default) polling take operations against
         the space using the provided template (in our case, and the non processed data objects).
         Once a match is found, the data processor bean event listener is triggered using the
         annotation adapter.

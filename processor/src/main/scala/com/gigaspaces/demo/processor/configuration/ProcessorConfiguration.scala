@@ -1,9 +1,9 @@
-package com.gigaspaces.demo.processor.scala.configuration
+package com.gigaspaces.demo.processor.configuration
 
-import com.gigaspaces.demo.common.scala.Data
 import org.springframework.context.annotation.{Bean, Configuration}
-import com.gigaspaces.demo.processor.scala.Processor
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
+import com.gigaspaces.demo.processor.Processor
+import com.gigaspaces.demo.common.Data
 
 /**
  * @author Jez

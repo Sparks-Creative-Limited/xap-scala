@@ -1,8 +1,8 @@
-package com.gigaspaces.demo.common.scala
+package com.gigaspaces.demo.common
 
-import scala.beans.{BooleanBeanProperty, BeanProperty}
+import _root_.scala.annotation.meta.beanGetter
+import _root_.scala.beans.{BooleanBeanProperty, BeanProperty}
 import com.gigaspaces.annotation.pojo.{SpaceRouting, SpaceId, SpaceClass}
-import scala.annotation.meta.beanGetter
 
 /**
  * @author Jez

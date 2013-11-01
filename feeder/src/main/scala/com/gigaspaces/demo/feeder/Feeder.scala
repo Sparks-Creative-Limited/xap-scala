@@ -1,14 +1,13 @@
-package com.gigaspaces.demo.feeder.scala
+package com.gigaspaces.demo.feeder
 
+import _root_.scala.beans.BeanProperty
+import _root_.scala.concurrent._
 import org.springframework.beans.factory.{DisposableBean, InitializingBean}
 import java.util.logging.Logger
 import org.openspaces.core.GigaSpace
 import org.openspaces.core.context.GigaSpaceContext
-import scala.concurrent.future
-import scala.concurrent._
 import ExecutionContext.Implicits.global
-import scala.beans.BeanProperty
-import com.gigaspaces.demo.common.scala.Data
+import com.gigaspaces.demo.common.Data
 
 /**
  * @author Jez
@@ -32,21 +31,20 @@ class Feeder extends InitializingBean with DisposableBean {
     cancelled = true
   }
 
-  def afterPropertiesSet() = {
-    future[Unit] {
-      var counter = 1
-      while (!cancelled) {
-        val time = System.currentTimeMillis
-        val data: Data = new Data({
-          counter += 1
-          counter - 1
-        } % numberOfTypes, "FEEDER " + time)
+  def afterPropertiesSet() = future {
+    def feed(counter: Int): Unit = {
+      val time = System.currentTimeMillis
+      val data: Data = new Data(counter % numberOfTypes, "FEEDER " + time)
 
-        gigaSpace.write(data)
-        log.info("--- FEEDER WROTE " + data)
-        Thread.sleep(defaultDelay)
-      }
+      gigaSpace.write(data)
+      log.info("--- FEEDER WROTE " + data)
+
+      blocking(Thread.sleep(defaultDelay))
+      feed(counter + 1)
     }
+
+    feed(1)
   }
+
 
 }
