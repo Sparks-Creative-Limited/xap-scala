@@ -20,9 +20,8 @@ class Processor {
   @SpaceDataEvent
   def processData(data: Data): Data = {
     Thread.sleep(workDuration)
-    data.setProcessed(true)
-    data.setData("PROCESSED : " + data.getRawData)
-    log.info(" ------ PROCESSED : " + data)
+    data.setProcessed(1)
+    log.info(" ------ PROCESSED (1): " + data)
     data
   }
 

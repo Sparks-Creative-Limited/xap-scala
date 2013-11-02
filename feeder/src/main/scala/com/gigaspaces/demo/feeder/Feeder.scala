@@ -9,9 +9,6 @@ import org.openspaces.core.context.GigaSpaceContext
 import ExecutionContext.Implicits.global
 import com.gigaspaces.demo.common.Data
 
-/**
- * @author Jez
- */
 class Feeder extends InitializingBean with DisposableBean {
 
   val log= Logger.getLogger(this.getClass.getName)
@@ -31,10 +28,10 @@ class Feeder extends InitializingBean with DisposableBean {
     cancelled = true
   }
 
-  def afterPropertiesSet() = future {
+  override def afterPropertiesSet() = future {
     def feed(counter: Int): Unit = {
       val time = System.currentTimeMillis
-      val data: Data = new Data(counter % numberOfTypes, "FEEDER " + time)
+      val data: Data = new Data("FEEDER " + time, counter % numberOfTypes)
 
       gigaSpace.write(data)
       log.info("--- FEEDER WROTE " + data)

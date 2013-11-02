@@ -11,7 +11,7 @@
        http://www.openspaces.org/schema/core http://www.openspaces.org/schema/9.1/core/openspaces-core.xsd
        http://www.openspaces.org/schema/events http://www.openspaces.org/schema/9.1/events/openspaces-events.xsd">
 
-    <context:component-scan base-package="com.gigaspaces.demo.processor.scala" />
+    <context:component-scan base-package="com.gigaspaces.demo.processor" />
     <task:annotation-driven />
 
     <!--

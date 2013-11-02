@@ -5,9 +5,6 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
 import com.gigaspaces.demo.processor.Processor
 import com.gigaspaces.demo.common.Data
 
-/**
- * @author Jez
- */
 @Configuration
 class ProcessorConfiguration {
 
@@ -17,8 +14,7 @@ class ProcessorConfiguration {
    */
   @Bean
   def unprocessedDataTemplate = {
-    val template = new Data()
-    template.setProcessed(false)
+    val template = new Data(null, null, 0)
     template
   }
 
